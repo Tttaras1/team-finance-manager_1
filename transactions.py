@@ -57,3 +57,38 @@ def show_transactions(transactions: list) -> None:
    print("-" * 50)
    for transaction in transactions :
         print(f"{transaction['id']:<3} | {transaction['type']:<7} | {transaction['amount']:<9} | {transaction['category']:<11} | {transaction['description']:<13}")
+
+def filter_by_category(transactions, category):
+    """
+    фільтрує та виводить транзакцію за категорією
+
+    аргументи:
+        transactions (list) - список поточних транзакцій
+        category (str) - назва категорії для фільтрації
+
+    повертає:
+        список відфільтрованих транзакцій
+    """
+    category_lower = category.strip().casefold()
+    return [
+        transaction
+        for transaction in transactions
+        if transaction["category"].strip().casefold() == category_lower
+    ]
+
+def delete_transaction(transactions, transaction_id):
+    """
+    видаляє транзакцію за унікальним індексом або ID
+
+    агрументи:
+        transactions (list) - список поточних транзакцій
+        transaction_id (int)- індекс транзакції для видалення
+
+    повертає:
+        оновлений список транзакцій та повідомлення про статус
+    """
+    for index, transaction in enumerate(transactions):
+        if transaction["id"] == transaction_id:
+            removed = transactions.pop(index)
+            return transactions, f"видалено транзакцію {removed}"
+    return transactions, "помилка. транзакцію не знайдено"
