@@ -21,3 +21,14 @@ def add_transaction(transactions, transaction_type, amount, category, descriptio
     }
     transactions.append(transaction)
     print("Транзакцію додано")
+
+
+def show_transactions(transactions):
+   if not transactions:
+       print("Список порожній")
+       return
+   
+   print(f"{'ID' :<3} | {'TYPE' :<7} | {'AMOUNT' :<9} | {'CATEGORY' :<11} | {'DESCRIPTION' :<13}"  )
+   print("-" * 50)
+   for i in transactions :
+        print(f"{i['id']:<3} | {i['type']:<7} | {i['amount']:<9} | {i['category']:<11} | {i['description']:<13}")
