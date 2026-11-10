@@ -32,12 +32,3 @@ def show_transactions(transactions):
    print("-" * 50)
    for i in transactions :
         print(f"{i['id']:<3} | {i['type']:<7} | {i['amount']:<9} | {i['category']:<11} | {i['description']:<13}")
-
-
-def delete_transaction(transactions, transaction_id):
-    for i in transactions:
-        if i["id"] == transaction_id:
-            transactions.remove(i)
-            print("Транзакцію видалено")
-            return
-    print("Транзакцію не знайдено")
