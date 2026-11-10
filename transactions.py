@@ -16,7 +16,7 @@ def add_transaction(transactions : list, transaction_type: str, amount: float, c
         return 
     if amount is None :
         return
-    if not isinstance (amount, ( int , float)) or amount < 0:
+    if not isinstance (amount, ( int , float)) or amount <= 0:
         print("Cума має бути додатнім числом")
         return
 
